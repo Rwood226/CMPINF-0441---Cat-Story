@@ -1,9 +1,9 @@
 public class Cat {
+	static int destroyedFurniture = 0;
 
-	static String catName = "Winter";
-
-	public static void meow (String sound) {
-		System.out.println (catName + " says " + sound);
+	public static String meow (String name, String sound) {
+		String catMeow = (name + " says " + sound);
+		return catMeow;
 	}
 
 	public static String describeCat (String name, int age) {
@@ -16,15 +16,25 @@ public class Cat {
 		return catStory;
 	}
 
+	public static String destroyFurniture () {
+		destroyedFurniture++;
+		String furnitureIsDestroyed = ("Total pieces of furniture destroyed: " + destroyedFurniture);
+		return furnitureIsDestroyed;
+	}
+
+	public static String introduceCat (String name, int age, String story, int destroyedFurniture) {
+		String catIsAwake = (name + " is awake.\n");
+
+		String fullIntroduction = (catIsAwake + meow (name, "meow") + "\n" + meow (name, "purrr") + "\n" + describeCat (name, age) + "\n" + createFunnyStory (name, story) + "\n" + destroyFurniture () + "\n\n");
+		return fullIntroduction;
+	}
+
 	public static void main (String[] args) {
-		System.out.println (catName + " is awake.\n");
+		String winterStory = "Winter likes to hunt outside and frequently brings us animals as gifts.";
+		String biscottiStory = "Biscotti is a cat!";
 
-		meow ("meow");
-		meow ("purrr");
-
-		describeCat (catName, 3);
-		describeCat ("Winter", 5);
-
-		createFunnyStory ("Winter", "Winter likes to hunt outside and frequently brings us animals as gifts.");
+		//introduceCat("insertCatName", catAgeAsInt, catStoryAsString);
+		System.out.println (introduceCat ("Winter", 5, winterStory, 4));
+		System.out.println (introduceCat ("Biscotti", 3, biscottiStory, 1));
 	}
 }
